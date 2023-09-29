@@ -6,18 +6,15 @@
  */
 
 import React from 'react';
-import {SafeAreaView} from 'react-native';
 
 import {Home} from './screens';
 import {Providers} from './utils';
 
 function App(): JSX.Element {
   return (
-    <SafeAreaView>
-      <Providers>
-        <Home />
-      </Providers>
-    </SafeAreaView>
+    <Providers>
+      <Home />
+    </Providers>
   );
 }
 
