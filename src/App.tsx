@@ -7,8 +7,8 @@
 
 import React from 'react';
 
-import {Home} from './screens';
-import {Providers} from './utils';
+import { Home } from './screens';
+import { Providers } from './utils';
 
 function App(): JSX.Element {
   return (

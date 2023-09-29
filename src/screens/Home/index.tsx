@@ -1,15 +1,13 @@
 import React from 'react';
-import axios from 'axios';
-import {useQuery} from 'react-query';
+import { useQuery } from 'react-query';
 
 import * as S from './styles';
+import { getPosts } from '../../services/api';
 
 export const Home = () => {
   const query = useQuery('posts', async () => {
-    const result = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts',
-    );
-    return result.data;
+    const result = await getPosts();
+    return result;
   });
 
   if (query.isLoading) {
@@ -25,7 +23,7 @@ export const Home = () => {
       <S.Title>Resultado da API</S.Title>
       <S.List
         data={query.data}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <S.PostContainer>
             <S.PostText>{item.title}</S.PostText>
             <S.PostText>{item.body}</S.PostText>
