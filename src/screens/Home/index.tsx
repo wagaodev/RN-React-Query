@@ -1,16 +1,12 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 
 import * as S from './styles';
-import { getPosts } from '../../services/api';
+import { usePosts } from '../../hooks';
 
 export const Home = () => {
-  const query = useQuery('posts', async () => {
-    const result = await getPosts();
-    return result;
-  });
+  const posts = usePosts();
 
-  if (query.isLoading) {
+  if (posts.isLoading) {
     return (
       <S.Container>
         <S.Loading />
@@ -22,7 +18,7 @@ export const Home = () => {
     <S.Container>
       <S.Title>Resultado da API</S.Title>
       <S.List
-        data={query.data}
+        data={posts.data}
         renderItem={({ item }) => (
           <S.PostContainer>
             <S.PostText>{item.title}</S.PostText>
