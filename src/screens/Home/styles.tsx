@@ -20,3 +20,12 @@ export const Loading = styled.ActivityIndicator.attrs({
 export const List = styled(FlatList)`
   padding-horizontal: 16px;
 `;
+
+export const Button = styled.TouchableOpacity`
+  background-color: #bbb;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 16px;
+`;
+
+export const ButtonText = styled.Text``;

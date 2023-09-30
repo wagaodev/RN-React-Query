@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ListRenderItemInfo } from 'react-native';
 
 import { usePosts } from '../../hooks';
@@ -8,7 +8,9 @@ import { ContentFlatList } from './components/renderItem';
 import * as S from './styles';
 
 export const Home = () => {
-  const posts = usePosts();
+  const [canLoad, setCanLoad] = useState(false);
+  const posts = usePosts(canLoad);
+  const handleFetchData = () => setCanLoad(true);
 
   if (posts.isFetching) {
     return (
@@ -27,6 +29,11 @@ export const Home = () => {
   return (
     <S.Container>
       <S.Title>Resultado da API</S.Title>
+      {!canLoad && (
+        <S.Button onPress={handleFetchData}>
+          <S.ButtonText>Buscar os dados</S.ButtonText>
+        </S.Button>
+      )}
       <S.List
         data={posts.data}
         renderItem={renderItem}
