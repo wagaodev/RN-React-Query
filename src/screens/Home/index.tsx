@@ -10,7 +10,7 @@ import * as S from './styles';
 export const Home = () => {
   const posts = usePosts();
 
-  if (posts.isLoading) {
+  if (posts.isFetching) {
     return (
       <S.Container>
         <S.Loading />

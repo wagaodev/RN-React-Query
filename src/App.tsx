@@ -8,7 +8,7 @@
 import React from 'react';
 
 import { Home } from './screens';
-import { Providers } from './utils';
+import { Providers } from './helpers';
 
 function App(): JSX.Element {
   return (
