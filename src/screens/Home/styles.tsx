@@ -1,9 +1,11 @@
 import styled from 'styled-components/native';
+import { FlatList, Platform } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding-top: ${Platform.OS === 'ios' ? 32 : 24}px;
 `;
 
 export const Title = styled.Text`
@@ -23,4 +25,6 @@ export const Loading = styled.ActivityIndicator.attrs({
   color: '#0000ff',
 })``;
 
-export const List = styled.FlatList``;
+export const List = styled(FlatList)`
+  padding-horizontal: 16px;
+`;

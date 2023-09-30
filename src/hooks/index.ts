@@ -1,1 +1,1 @@
-export { usePosts } from './queries/usePosts';
+export { usePosts, usePostId } from './queries/usePosts';
