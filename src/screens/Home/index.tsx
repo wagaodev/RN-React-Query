@@ -1,8 +1,11 @@
 import React from 'react';
-import * as S from './styles';
+import { ListRenderItemInfo } from 'react-native';
+
 import { usePosts } from '../../hooks';
 import { TPosts } from '@/types';
-import { ListRenderItem } from 'react-native';
+import { ContentFlatList } from './components/renderItem';
+
+import * as S from './styles';
 
 export const Home = () => {
   const posts = usePosts();
@@ -15,11 +18,10 @@ export const Home = () => {
     );
   }
 
-  const renderItem = ({ item }) => (
-    <S.PostContainer>
-      <S.PostText>{item.title}</S.PostText>
-      <S.PostText>{item.body}</S.PostText>
-    </S.PostContainer>
+  console.log('RENDERIZAÇÕES?', new Date());
+
+  const renderItem = ({ item }: ListRenderItemInfo<TPosts>) => (
+    <ContentFlatList {...item} />
   );
 
   return (
@@ -27,7 +29,7 @@ export const Home = () => {
       <S.Title>Resultado da API</S.Title>
       <S.List
         data={posts.data}
-        renderItem={renderItem as ListRenderItem<TPosts>}
+        renderItem={renderItem}
         keyExtractor={item => item.id.toString()}
       />
     </S.Container>
