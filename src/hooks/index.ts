@@ -1,1 +1,2 @@
-export { usePosts, usePostId } from './queries/usePosts';
+export * from './queries/usePosts';
+export * from './mutations';

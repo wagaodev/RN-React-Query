@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
-import { ListRenderItemInfo } from 'react-native';
-
-import { usePosts } from '../../hooks';
-import { TPosts } from '@/types';
+import { Button, ListRenderItemInfo } from 'react-native';
+import { useAddPost, usePosts } from '../../hooks';
+import { TPosts } from '../../types';
 import { ContentFlatList } from './components/renderItem';
 
 import * as S from './styles';
 
 export const Home = () => {
   const [canLoad, setCanLoad] = useState(false);
+  const useMutationAddPost = useAddPost();
   const posts = usePosts(canLoad);
-  const handleFetchData = () => setCanLoad(true);
+  const handleFetchData = () => {
+    setCanLoad(true);
+  };
+
+  const handleAddPost = () => {
+    useMutationAddPost.mutate({
+      title: 'Post adicionado',
+      body: 'Corpo do post adicionado',
+      userId: 1,
+    });
+  };
 
   if (posts.isFetching) {
     return (
@@ -29,6 +39,7 @@ export const Home = () => {
   return (
     <S.Container>
       <S.Title>Resultado da API</S.Title>
+      <Button onPress={handleAddPost} title="Adicionar Post" />
       {!canLoad && (
         <S.Button onPress={handleFetchData}>
           <S.ButtonText>Buscar os dados</S.ButtonText>

@@ -15,3 +15,8 @@ export const getUsers = async (): Promise<TUsers[]> => {
   const response = await req.get('users');
   return response.data;
 };
+
+export const addPost = async (data: Omit<TPosts, 'id'>): Promise<TPosts> => {
+  const response = await req.post('posts', data);
+  return response.data;
+};

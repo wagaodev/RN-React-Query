@@ -5,7 +5,7 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding-top: ${Platform.OS === 'ios' ? 32 : 24}px;
+  padding-top: ${Platform.OS === 'ios' ? 62 : 24}px;
 `;
 
 export const Title = styled.Text`

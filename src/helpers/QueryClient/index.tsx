@@ -7,7 +7,6 @@ export type TProps = {
 
 export const ReactQueryProvider = ({ children }: TProps) => {
   const queryClient = new QueryClient();
-
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
